@@ -6,6 +6,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using MongoLibSys.Core.Extensions;
+using MongoLibSys.Repository.Extensions;
 
 namespace MongoLibSys
 {
@@ -22,7 +23,12 @@ namespace MongoLibSys
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddConfiguration(this.Configuration);
+            var config = services.AddConfiguration(this.Configuration);
+            services.AddMongoDB(config => 
+            {
+                config.ConnectionString = config.ConnectionString;
+                config.Database = config.Database;
+            });
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
