@@ -10,7 +10,7 @@ namespace MongoLibSys.Repository.Contracts
     {
         Task CreateOneAsync(T obj);
         Task CreateManyAsync(IEnumerable<T> objs);
-        Task<DeleteResult> RemoveByIdAsync(ObjectId id);
+        Task RemoveByIdAsync(T obj);
         Task<ReplaceOneResult> ReplaceOneByIdAsync(T obj);
     }
 }

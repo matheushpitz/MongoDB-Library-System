@@ -15,8 +15,7 @@ namespace MongoLibSys.Model.Base
         public BsonDateTime DeletedAt { get; set; }
 
         public BaseModel()
-        {
-            this.CreatedAt = BsonDateTime.Create(DateTime.Now);            
+        {           
         }
     }
 }

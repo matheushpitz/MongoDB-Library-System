@@ -17,17 +17,24 @@ namespace MongoLibSys.Repository.Data
         }
         public Task CreateManyAsync(IEnumerable<T> objs)
         {
+            foreach(var obj in objs)
+            {
+                obj.CreatedAt = DateTime.Now;
+            }
+
             return this._collection.InsertManyAsync(objs);
         }
 
         public Task CreateOneAsync(T obj)
         {
+            obj.CreatedAt = DateTime.Now;
             return this._collection.InsertOneAsync(obj);
         }
 
-        public Task<DeleteResult> RemoveByIdAsync(ObjectId id)
+        public Task RemoveByIdAsync(T obj)
         {
-            return this._collection.DeleteOneAsync<T>(x => x.Id.Equals(id));
+            obj.DeletedAt = DateTime.Now;
+            return this.ReplaceOneByIdAsync(obj);
         }
 
         public Task<ReplaceOneResult> ReplaceOneByIdAsync(T obj)
