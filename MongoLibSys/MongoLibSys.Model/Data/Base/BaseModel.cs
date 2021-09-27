@@ -2,10 +2,11 @@
 using MongoDB.Bson.Serialization.Attributes;
 using System;
 
-namespace MongoLibSys.Model.Base
+namespace MongoLibSys.Model.Data.Base
 {
     public class BaseModel
     {
+        [BsonElement("id")]
         [BsonId()]
         public ObjectId Id { get; set; }
         [BsonElement("created_at")]

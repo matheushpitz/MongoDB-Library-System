@@ -1,6 +1,5 @@
-﻿using MongoDB.Bson;
-using MongoDB.Driver;
-using MongoLibSys.Model.Base;
+﻿using MongoDB.Driver;
+using MongoLibSys.Model.Data.Base;
 using MongoLibSys.Repository.Contracts;
 using System;
 using System.Collections.Generic;

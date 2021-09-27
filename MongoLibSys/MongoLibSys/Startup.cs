@@ -5,8 +5,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using MongoLibSys.Core;
 using MongoLibSys.Core.Extensions;
 using MongoLibSys.Repository.Extensions;
+using MongoLibSys.Service.Extensions;
 
 namespace MongoLibSys
 {
@@ -30,7 +32,13 @@ namespace MongoLibSys
                 config.Database = config.Database;
             });
 
-            services.AddControllers();
+            services.AddServices();
+            services.AddRepositories();
+
+            services.AddControllers(options => 
+            {
+                options.Filters.Add(new HttpResponseExceptionFilter());
+            });
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "MongoLibSys", Version = "v1" });

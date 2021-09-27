@@ -10,7 +10,7 @@ namespace MongoLibSys.Repository.Data
 {
     internal class BookRepository : BaseRepository<Book>, IBookRepository
     {
-        public BookRepository(MongoContext context) : base(context, "Book") { }
+        public BookRepository(MongoContext context) : base(context, "Books") { }
         public async Task<IEnumerable<Book>> GetAllPaginatedAsync(int limit, int page, string search = null)
         {
             var query = this._collection.AsQueryable()

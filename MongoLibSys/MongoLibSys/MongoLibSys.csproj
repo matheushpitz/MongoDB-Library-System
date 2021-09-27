@@ -13,6 +13,7 @@
   <ItemGroup>
     <ProjectReference Include="..\MongoLibSys.Core\MongoLibSys.Core.csproj" />
     <ProjectReference Include="..\MongoLibSys.Repository\MongoLibSys.Repository.csproj" />
+    <ProjectReference Include="..\MongoLibSys.Service\MongoLibSys.Service.csproj" />
   </ItemGroup>
 
 </Project>
